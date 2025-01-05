@@ -23,15 +23,8 @@ def index(request):
             email_message = EmailMessage("Form submission confirmaiton", message_body, email)
             email_message.send
 
-        # message = Message(
-        #     subject='New Form Submission',
-        #     sender=app.config["MAIL_USERNAME"],
-        #     recipients=[email],
-        #     body=message_body
-        # )
-
-        # mail.send(message)
-
-        # flash(f"{first_name}, Your form was submitted successfully!", "success")
-
     return render(request, "index.html")
+
+
+def about(request):
+    return render(request, "about.html")
