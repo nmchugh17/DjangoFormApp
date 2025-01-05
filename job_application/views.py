@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import ApplicationForm
+from.models import Form
 
 
 def index(request):
@@ -11,20 +12,13 @@ def index(request):
             email = form.cleaned_data['email']
             date = form.cleaned_data['date']
             occupation = form.cleaned_data['occupation']
-            print(first_name)
-        # form = Form(
-        #     first_name=first_name,
-        #     last_name=last_name,
-        #     email=email,
-        #     date=date_obj,
-        #     occupation=occupation
-        # )
 
-        # db.session.add(form)
-        # db.session.commit()
+            Form.objects.create(first_name=first_name, last_name=last_name,
+                                email=email, date=date, occupation=occupation)
 
-        message_body = f"Thank you for your submission {first_name}." \
-                       f"Here is your data: \n{first_name}\n{last_name}\n{date}\n"
+        # message_body = f"Thank you for your submission {first_name}." \
+        #                f"Here is your data: \n{first_name}\n{last_name}\n{date}\n"
+
         # message = Message(
         #     subject='New Form Submission',
         #     sender=app.config["MAIL_USERNAME"],
